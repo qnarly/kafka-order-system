@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: producer-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/producer_db
+    username: admin
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    enabled: true
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+server:
+  port: 8080
