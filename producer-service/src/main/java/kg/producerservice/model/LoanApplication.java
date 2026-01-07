@@ -1,6 +1,7 @@
 package kg.producerservice.model;
 
 import jakarta.persistence.*;
+import kg.producerservice.enums.LoanState;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "loan_applications")
 @Builder
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoanApplication {
@@ -29,7 +31,8 @@ public class LoanApplication {
     private BigDecimal salary;
 
     @Column(nullable = false)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private LoanState status;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)

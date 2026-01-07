@@ -1,10 +1,11 @@
 package kg.producerservice.service;
 
 import kg.producerservice.dto.LoanRequestDto;
+import kg.producerservice.enums.LoanState;
 
 public interface LoanService {
 
     Long createApplication(LoanRequestDto request);
 
-    String getStatus(Long id);
+    LoanState getStatus(Long id);
 }
