@@ -46,9 +46,10 @@ public class LoanServiceImpl implements LoanService {
     }
 
     @Override
-    public LoanState getStatus(Long id) {
+    public String getStatus(Long id) {
         return loanRepository.findById(id)
                 .map(LoanApplication::getStatus)
-                .orElse(LoanState.NOT_FOUND);
+                .map(Enum::name)
+                .orElse(LoanState.NOT_FOUND.name());
     }
 }
