@@ -4,19 +4,21 @@ spring:
 
   datasource:
     url: jdbc:postgresql://localhost:5432/producer_db
-    username: admin
-    password: root
+    username: postgres
+    password: postgres
     driver-class-name: org.postgresql.Driver
-
+  liquibase:
+    change-log: classpath:db/changelog/master.yaml
+    enabled: true
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: validate
-    show-sql: true
+    properties:
+      hibernate:
+        generate_statistics: false
+        format_sql: true
+    show-sql: false
 
-  liquibase:
-    change-log: classpath:db/changelog/db.changelog-master.yaml
-    enabled: true
 
   kafka:
     bootstrap-servers: localhost:9092
